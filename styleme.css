@@ -1,0 +1,43 @@
+
+
+body {
+    background-color: #ADD8E6;
+
+  }
+  
+  .co{
+     color: rgb(244, 244, 114);
+     font-family: Georgia, serif;
+     font-weight: bold;
+     font-style: italic;
+  }
+.a{
+    color: rgb(73, 73, 236);
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.dot{
+    list-style-type: disc;
+}
+
+.my{
+    width:50%;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.mymood2{
+    margin-top:0px;
+	float: 1px;;
+
+}
+
+.mymood3{
+    margin: top 0px;
+	float: 1px;;
+
+}

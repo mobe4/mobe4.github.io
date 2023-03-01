@@ -1,0 +1,115 @@
+body {
+    background-image: url("./images/silverware.jpg");
+    background-size: cover;
+    background-size: 1024px ;
+    font-family: Georgia, Garamond, serif;
+    font-size: 11pt;
+    color: #404040;
+    background-color: #FFFFFF;
+    background-repeat: repeat;
+    background-attachment: fixed;
+  }
+  title {
+    font-family: Lucida Sans Unicode, Helvetica, Arial, sans-serif;
+    color: #A4A400;
+    background-color: #F0F0F0;
+  }
+  
+
+  .b,.a {
+    text-decoration: underline;
+    background-color: #a4a400 (red=164, green=164, blue=0);
+    letter-spacing: 0.25em;
+  }
+ .a{
+    text-align: center;
+  font-family: Lucida Sans Unicode, Helvetica, Arial, sans-serif;
+  font-size: 22pt;
+  font-weight: bold;
+  color: #A4A400;
+  background-color: #F0F0F0;
+  text-decoration: underline;
+  letter-spacing: 0.25em;
+  display: inline-block;
+  background-color: #ccc;
+  padding: 0.2em 0.4em;
+  margin: 0.5em 0;
+ }
+  .b, .a{
+    font-family: Lucida Sans Unicode, Helvetica, Arial, sans-serif;
+    font-size: 18pt;
+    font-weight: normal;
+    color: #A4A400;
+    background-color: #F0F0F0;
+    text-decoration: underline;
+    letter-spacing: 0.25em;
+    display: inline-block;
+  background-color: #ccc;
+  padding: 0.2em 0.4em;
+  margin: 0.5em 0;
+  }
+  .ol {
+    list-style-type: disc;
+  }
+  
+  ol {
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item;
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+  
+  ol ol {
+    list-style-type: circle;
+    margin-left: 1em;
+  }
+  
+  ol ol li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item;
+    font-weight: normal;
+    margin-right: 0.5em;
+  }
+.k{
+    background-color: yellow;
+}
+.p abbr:hover::before {
+    content: attr(title);
+    position: absolute;
+    padding: 0.5em;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.8em;
+    border-radius: 5px;
+  }
+  .copyright {
+    font-family: monospace;
+    text-align: justify;
+  }
+  .n{
+    font-weight: bold;
+  }
+  .ri{
+    background-color: #FFFFA8;
+    padding: 10px;
+    margin: 10px 0;
+    font-style: italic;
+  }
+  .l{
+    font-weight: bold;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  
