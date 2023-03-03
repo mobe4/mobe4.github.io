@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retrieve Grade</title>
+</head>
+<body>
+  <h1>Retrieve Your Grade</h1>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="student-id">Student ID:</label>
+    <input type="text" id="student-id" name="student-id"><br>
+
+    <label for="assignment">Assignment:</label>
+    <select id="assignment" name="assignment">
+      <option value="assignment-1">Assignment 1</option>
+      <option value="assignment-2">Assignment 2</option>
+      <option value="assignment-3">Assignment 3</option>
+      <option value="assignment-4">Assignment 4</option>
+    </select><br>
+
+    <label for="entry">Entry:</label>
+    <input type="radio" id="midterm" name="entry" value="midterm">
+    <label for="midterm">Midterm</label>
+    <input type="radio" id="final" name="entry" value="final">
+    <label for="final">Final</label><br>
+
+    <input type="checkbox" id="confirm" name="confirm">
+    <label for="confirm">I confirm that I am only looking up my own grade.</label><br>
+
+    <input type="submit" value="Get Grade">
+  </form>
+  <a href="index.html">back to front page</a>
+</body>
+</html>

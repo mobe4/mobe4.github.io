@@ -1,0 +1,20 @@
+
+  button {
+    font-size: 24px;
+    padding: 5px 10px;
+    background-color: #ffb6c1;
+  }
+
+  fieldset {
+    background-color: #e6e6fa;
+    width: 400px;
+    height: 200px;
+  }
+ .ab{
+    width: fit-content;;
+    height: fit-content;
+ }
+
+ span {
+  color: rgb(66, 34, 209);
+}
