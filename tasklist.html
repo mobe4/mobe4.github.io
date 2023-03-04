@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task List Application</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		#container {
+			margin: 0 auto;
+			width: 600px;
+			border: 2px solid blue;
+			padding: 20px;
+		}
+		h1 {
+			text-align: center;
+		}
+		input[type="text"] {
+			padding: 10px;
+			width: 70%;
+		}
+		button {
+			padding: 10px;
+			margin: 10px;
+		}
+		#task-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			border: 2px solid black;
+			height: 200px;
+			overflow-y: auto;
+		}
+		#task-list li {
+			padding: 10px;
+			margin: 10px;
+			border: 1px solid #ccc;
+			background-color: #f9f9f9;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>Task List</h1>
+		<input type="text" id="task" placeholder="Enter task here"><br>
+		<button id="add-task">Add Task</button>
+		<button id="clear-tasks">Clear Tasks</button>
+		<ul id="task-list"></ul>
+	</div>
+
+	<script>
+		const taskInput = document.getElementById("task");
+		const addTaskButton = document.getElementById("add-task");
+		const clearTasksButton = document.getElementById("clear-tasks");
+		const taskList = document.getElementById("task-list");
+
+		// Check if there are any saved tasks and add them to the task list
+		if (localStorage.getItem("tasks")) {
+			taskList.innerHTML = localStorage.getItem("tasks");
+		}
+
+		// Add task to the task list and save it to localStorage
+		addTaskButton.addEventListener("click", function() {
+			if (taskInput.value !== "") {
+				const taskItem = document.createElement("li");
+				taskItem.textContent = taskInput.value;
+				taskList.appendChild(taskItem);
+				taskInput.value = "";
+
+				localStorage.setItem("tasks", taskList.innerHTML);
+			}
+		});
+
+		// Clear all tasks from the task list and localStorage
+		clearTasksButton.addEventListener("click", function() {
+			taskList.innerHTML = "";
+			localStorage.removeItem("tasks");
+		});
+	</script>
+</body>
+</html>
