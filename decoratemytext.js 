@@ -1,0 +1,29 @@
+function showAlert() {
+  alert("Hello! This page has been loaded.");
+}
+
+function makeBigger() {
+  var textArea = document.getElementById("text-area");
+  textArea.style.fontSize = "24pt";
+}
+
+window.onload = function() {
+  var button = document.querySelector("button");
+  button.onclick = makeBigger;
+};
+function toggleBling() {
+  var textArea = document.querySelector("#text-area");
+  var checkbox = document.querySelector("#bling-checkbox");
+  
+  if (checkbox.checked) {
+    textArea.style.fontWeight = "bold";
+    textArea.style.color = "green";
+    textArea.style.textDecoration = "underline";
+  } else {
+    textArea.style.fontWeight = "normal";
+    textArea.style.color = "black";
+    textArea.style.textDecoration = "none";
+  }
+  
+  alert("The bling checkbox is now " + (checkbox.checked ? "checked" : "unchecked") + ".");
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decorate My Text</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		fieldset {
+			border: 2px solid black;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+	</style>
+	<script>
+		function toggleBling() {
+			var textArea = document.querySelector("#text-area");
+			var checkbox = document.querySelector("#bling-checkbox");
+			var body = document.querySelector("body");
+		  
+			if (checkbox.checked) {
+				textArea.style.fontWeight = "bold";
+				textArea.style.color = "green";
+				textArea.style.textDecoration = "underline";
+				body.style.backgroundImage = "url('http://www.cs.washington.edu/education/courses/190m/CurrentQtr/labs/6/hundred-dollar-bill.jpg')";
+			} else {
+				textArea.style.fontWeight = "normal";
+				textArea.style.color = "black";
+				textArea.style.textDecoration = "none";
+				body.style.backgroundImage = "";
+			}
+		  
+			alert("The bling checkbox is now " + (checkbox.checked ? "checked" : "unchecked") + ".");
+		}
+
+		function increaseFontSize() {
+			var textArea = document.querySelector("#text-area");
+			var currentFontSize = parseInt(textArea.style.fontSize) || 12;
+			var newFontSize = currentFontSize + 2;
+			textArea.style.fontSize = newFontSize + "pt";
+		}
+
+		function malkovitch() {
+			var textArea = document.querySelector("#text-area");
+			textArea.value = textArea.value.replace(/\b\w{5,}\b/g, "Malkovich");
+		}
+	</script>
+</head>
+<body>
+	<img src="./images/decorated.gif" alt="image of castle">
+	<h1>Decorate My Text</h1>
+	
+	<!-- Text field -->
+	<fieldset>
+		<legend>Text</legend>
+		<textarea id="text-area" rows="4" cols="30"></textarea>
+	</fieldset>
+    
+	<!-- Decoration controls -->
+	<fieldset>
+		<legend>Decoration</legend>
+		<button onclick="setInterval(increaseFontSize, 500)">Bigger Decorations!</button><br>
+		<button onclick="malkovitch()">Malkovitch</button><br>
+		<label><input type="checkbox" id="bling-checkbox" onchange="toggleBling()">Bling</label>
+	</fieldset>
+	
+</body>
+</html>
