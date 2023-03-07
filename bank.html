@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bank Accounts</title>
+    <script>
+      class BankAccount {
+        constructor(name, initialBalance) {
+          this._name = name;
+          this._balance = initialBalance;
+          BankAccount.accountInfoList.push(this);
+        }
+
+        deposit(amount) {
+          this._balance += amount;
+        }
+
+        withdraw(amount) {
+          if (this._balance >= amount) {
+            this._balance -= amount;
+          } else {
+            alert("Insufficient balance");
+          }
+        }
+
+        static displayAccounts() {
+          let textArea = document.getElementById("accountInfo");
+          textArea.innerHTML = "";
+          for (let account of BankAccount.accountInfoList) {
+            textArea.innerHTML += `Account name: ${account._name}, Balance: ${account._balance}\n`;
+          }
+        }
+      }
+
+      BankAccount.accountInfoList = [];
+
+      function createAccount() {
+        let name = document.getElementById("accountName").value;
+        let balance = parseFloat(document.getElementById("initialBalance").value);
+        let account = new BankAccount(name, balance);
+        BankAccount.displayAccounts();
+      }
+
+      function showDepositForm() {
+        let select = document.getElementById("accountSelect");
+        select.innerHTML = "";
+        for (let account of BankAccount.accountInfoList) {
+          let option = document.createElement("option");
+          option.value = account._name;
+          option.text = account._name;
+          select.add(option);
+        }
+        document.getElementById("depositAmount").value = "";
+        document.getElementById("depositForm").style.display = "block";
+      }
+      function deposit() {
+  let accountName = document.getElementById("accountSelect").value;
+  let amount = parseFloat(document.getElementById("depositAmount").value);
+  for (let account of BankAccount.accountInfoList) {
+    if (account._name === accountName) {
+      account.deposit(amount);
+      break;
+    }
+  }
+  BankAccount.displayAccounts();
+  document.getElementById("depositForm").style.display = "none";
+}
+      function showWithdrawForm() {
+        let select = document.getElementById("accountSelect");
+        select.innerHTML = "";
+        for (let account of BankAccount.accountInfoList) {
+          let option = document.createElement("option");
+          option.value = account._name;
+          option.text = account._name;
+          select.add(option);
+        }
+        document.getElementById("withdrawAmount").value = "";
+        document.getElementById("withdrawForm").style.display = "block";
+      }
+
+      function withdraw() {
+  let accountName = document.getElementById("accountSelect").value;
+  let amount = parseFloat(document.getElementById("withdrawAmount").value);
+  for (let account of BankAccount.accountInfoList) {
+    if (account._name === accountName) {
+      account.withdraw(amount);
+      break;
+    }
+  }
+  BankAccount.displayAccounts();
+  document.getElementById("withdrawForm").style.display = "none";
+}
+    </script>
+  </head>
+  <body>
+    <h1>Bank Accounts</h1>
+    <label for="accountName">Account Name:</label>
+    <input type="text" id="accountName"><br><br>
+    <label for="initialBalance">Initial Balance:</label>
+    <input type="text" id="initialBalance"><br><br>
+    <button onclick="createAccount()">Create Account</button>
+    <br><br>
+    <textarea id="accountInfo" rows="10" cols="50"></textarea>
+    <br><br>
+    <button onclick="showDepositForm()">Deposit</button>
+    <button onclick="showWithdrawForm()">Withdraw</button>
+
+    <div id="depositForm" style="display: none;">
+      <label for="accountSelect">Select Account:</label>
+      <select id="accountSelect"></select><br><br>
+      <label for="depositAmount">Deposit Amount:</label>
+      <input type="text" id="depositAmount"><br><br>
+      <button onclick="deposit()" disabled>Submit</button>
+    </div>
+
+    <div id="withdrawForm" style="display: none;">
+      <label for="accountSelect">Select Account:</label>
+      <select id="accountSelect"></select><br><br>
+      <label for="withdrawAmount">Withdraw Amount:</label>
+      <input type="text" id="withdrawAmount"><br><br>
+      <button onclick="withdraw()" disabled>Submit</button>
+    </div>
+
+    <script>
+      function enableSubmitButton() {
+        let amount = parseFloat(document.getElementById(this.amountInputId).value);
+        let button = document.getElementById(this.submitButtonId);
+        if (isNaN(amount) || amount <= 0) {
+          button.disabled = true;
+        } else {
+          button.disabled = false;
+        }
+      }
+
+      document.getElementById("depositAmount").addEventListener("input", enableSubmitButton.bind({amountInputId: "depositAmount", submitButtonId: "depositSubmit"}));
+      document.getElementById("withdrawAmount").addEventListener("input", enableSubmitButton.bind({amountInputId: "withdrawAmount", submitButtonId: "withdrawSubmit"}));
+    </script>
+  </body>
+</html>
+
+   
