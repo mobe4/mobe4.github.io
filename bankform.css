@@ -1,0 +1,10 @@
+.hidden {
+    display: none !important;
+}
+
+.form-control {
+    background-color: rgb(147, 157, 182);
+  }
+  .btn-primary {
+    background-color: rgb(91, 180, 58);
+  }

@@ -1,80 +1,59 @@
-let myTimer; 
-let index = 0; 
-let mode = "Blank"; 
-let time = 250; 
-
-window.onload = function(){ 
-    "use strict"; 
-
-    // put all of your code here 
-
-    let start = document.getElementById("start"); 
-    start.onclick = startButtonClicked; 
-
-    let stop = document.getElementById("stop"); 
-    stop.onclick = stopAnimation; 
-
-    let change = document.getElementById("animation"); 
-    change.onchange = changeAnimation; 
-
-    let size = document.getElementById("fontsize"); 
-    size.onchange = fontChange; 
-
-    let turbo = document.getElementById("turbo"); 
-    turbo.onchange = changeSpeed; 
-}; 
-
-function startButtonClicked(){ 
-    "use strict"; 
-
-    if(mode != "Blank"){ 
-        myTimer = setInterval(playAnimation, time, ANIMATIONS[mode]); 
-        document.getElementById("start").disabled = "disabled"; 
-        document.getElementById("stop").removeAttribute("disabled"); 
-    } 
-} 
-
-function changeAnimation(){ 
-    "use strict"; 
-
-    mode = document.getElementById("animation").value; 
-    document.getElementById("text-area").value = ""; 
-    index = 0; 
-    clearInterval(myTimer); 
-    startButtonClicked(); 
-} 
-
-function playAnimation(ani){ 
-    "use strict"; 
-
-    let arr = ani.split("=====\n"); 
-    document.getElementById("text-area").value = arr[index]; 
-    if (index > arr.length-2) { 
-        index = 0; 
-    } 
-    else{ 
-        index++; 
-    } 
-} 
-
-function stopAnimation(){ 
-    "use strict"; 
-
-    clearInterval(myTimer); 
-    document.getElementById("stop").disabled = "disabled"; 
-    document.getElementById("start").removeAttribute("disabled"); 
-} 
-
-function fontChange(){ 
-    "use strict"; 
-
-    document.getElementById("text-area").className = document.getElementById("fontsize").value; 
-} 
-
-function changeSpeed(){ 
-    "use strict"; 
-
-    time = document.getElementById("turbo").checked ? 50 : 250; 
-    clearInterval(myTimer); 
-    startButtonClicked(); 
+let timer;
+let index = 0;
+let animation = 'BLANK';
+let speed = 250;
+$(document).ready(function(){
+    "use strict";
+    // when clicking start button
+    $('button#start').click(function(){
+        $('textarea#mytextarea').prop('disabled', true);
+        $('select#animation').prop('disabled', true);
+        $('button#start').prop('disabled', true);
+        $('button#stop').prop('disabled', false);
+        // perform animation
+        console.log($('textarea#mytextarea').val());
+        if($('textarea#mytextarea').val()) startAnimation();
+    });
+    // when clicking stop button
+    $('button#stop').click(function(){
+        if(timer != 'undefined') {
+            // clear timer
+            clearInterval(timer);
+            // put back original text
+            setTimeout(function() { 
+                $('textarea#mytextarea').val(ANIMATIONS[animation]);
+            }, 700);
+        }
+        $('textarea#mytextarea').prop('disabled', false);
+        $('select#animation').prop('disabled', false);
+        $('button#stop').prop('disabled', true);
+        $('button#start').prop('disabled', false);
+    });
+    // when choosing animation select box
+    $('select#animation').on('change', function() {
+        animation = this.value;
+        $('textarea#mytextarea').val(ANIMATIONS[animation]);
+    });
+    // when choosing size select box
+    $('select#size').on('change', function() {
+        $('textarea#mytextarea').css("font-size", this.value + "px");
+    });
+    // when toggling speed checkbox
+    $("input#speed").change(function() {
+        if(timer != 'undefined') {
+            speed = this.checked ? 50 : 250;
+            // clear timer
+            clearInterval(timer);
+            // restart animation
+            startAnimation();
+        }
+    });
+});
+// animation starter function
+function startAnimation() {
+    timer = setInterval(function () {
+        let arr = ANIMATIONS[$('select#animation').val()].split("=====\n");
+        $('textarea#mytextarea').val(arr[index]);
+        index = (index > arr.length-2) ? 0 : (index + 1);
+    }, speed);
 }
