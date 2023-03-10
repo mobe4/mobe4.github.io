@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1...$(document).ready(function() {
+        // select the span element and remove it
+        $('p:last-child span').remove();
+      });
+      </p>
+
+      <p>2..$(document).ready(function() {
+        // select the level-2 list items and add a red background color
+        $('ul.level-2 li').css('background-color', 'red');
+      });
+      </p>
+      <P>3..$(document).ready(function() {
+        // select the element that comes before item three and change its background color to blue
+        $('.third-item').prev().css('background-color', 'blue');
+      });
+      </P>
+      <p>4..var $entree = $(this).parent('.menu-item').clone();
+        $entree.find('.turkey').text('Mashed Potatoes');
+        </p>
+        <P>5..$(document).ready(function() {
+            $('span').parents('li').css('color', 'green');
+          });
+          </P>
+</body>
+</html>
